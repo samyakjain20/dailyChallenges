@@ -5,7 +5,7 @@ int avgWaitTime(int orderT[], int cookT[], int n){
     int currT=0;                            //to maintain time 
     int waitT=0;                            //adding the wait time
     int ctr=0, minT = INT_MAX, id=0;
-    bool flag= false, orders[n];
+    bool flag = false, orders[n];
     memset(orders, true, sizeof(orders));   //in start all orders need to be cooked
     
     while(ctr<n){
@@ -18,22 +18,24 @@ int avgWaitTime(int orderT[], int cookT[], int n){
         
         if(flag){
             flag = false;
-            orders[id] = false;             //order is cooked
+            orders[id] = false;             //to make this order is cooked
             minT = INT_MAX;
             currT += cookT[id];             //time after this order is cooked
             waitT += (currT - orderT[id]);  //adding the wait for this order
             ctr++;                          //increase the count for order's served 
-        }else currT++;
+        }
+        else currT++;
     }
     
-    return waitT/n;
+    return waitT/n;                 //returning the total avg wait time
 } 
 
 int main() {
     int n;
-    cin>>n;
+    cin>>n;                         //no of orders
     
-    int orderT[n], cookT[n];
+    int orderT[n];                  //customer order time
+    int cookT[n];                   //time req to cook their respective pan 
     for(int i=0; i<n; i++)
         cin>>orderT[i]>>cookT[i];
         
